@@ -112,6 +112,7 @@ body {
   letter-spacing: 0.04em;
   border: none;
   margin-top: 16px;
+  cursor: pointer;
 }
 
 .feedback-form>button:hover {

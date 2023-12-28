@@ -1,19 +1,18 @@
 const FEEDBACK_DATA_KEY = "feedback-form-state";
 
 const form = document.querySelector(".feedback-form");
-const textarea = form.querySelector("textarea");
 
 try {
     const initialFormData = JSON.parse(localStorage.getItem(FEEDBACK_DATA_KEY));
 
     Array.from(form.elements).forEach(element => {
-        const storageValue = initialFormData(element.name);
+        const storageValue = initialFormData[element.name];
         if (storageValue) {
             element.value = storageValue;
         }
     })
 } catch (e) {
-    console.log("PARSE STORAGE ERROR");
+    console.error("Помилка парсингу даних локального сховища");
 }
 
 const createFormObj = (formData) => {
