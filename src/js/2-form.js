@@ -19,7 +19,7 @@ const createFormObj = (formData) => {
     const formObj = {};
 
     formData.forEach((value, key) => {
-        formObj[key] = value;
+        formObj[key] = value.trim();
     });
 
     return formObj;
@@ -34,8 +34,11 @@ form.addEventListener("input", () => {
 form.addEventListener("submit", (event) => {
     event.preventDefault(); 
     localStorage.removeItem(FEEDBACK_DATA_KEY);
-    const formData = new FormData(form);
+    // if (event.currentTarget.value) {
+    //     window.alert("Поле не може бути пустим")
+    // }
+    const formData = new FormData(event.currentTarget);
     console.log(createFormObj(formData));
-    form.reset();
+    event.currentTarget.reset();
 });
 
