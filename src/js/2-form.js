@@ -36,16 +36,10 @@ form.addEventListener("submit", (event) => {
     event.preventDefault(); 
 
     const data = new FormData(event.target);
-    let fill = true;
+    const { email, message } = event.target.elements;
     
-    data.forEach((value) => {
-        if (!value) {
-            fill = false;
-            return;
-        }
-    });
-    if (fill === false) {
-        return document.alert("Поле не може бути пустим");
+    if (!email.value.trim() || !message.value.trim()) {
+        return alert("Поле не може бути пустим");
     }
     const formData = new FormData(event.currentTarget);
     console.log(createFormObj(formData));
