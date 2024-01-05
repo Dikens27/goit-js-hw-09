@@ -34,7 +34,6 @@ form.addEventListener("input", () => {
 
 form.addEventListener("submit", (event) => {
     event.preventDefault(); 
-    localStorage.removeItem(FEEDBACK_DATA_KEY);
 
     const data = new FormData(event.target);
     let fill = true;
@@ -46,11 +45,12 @@ form.addEventListener("submit", (event) => {
         }
     });
     if (fill === false) {
-        window.alert("Поле не може бути пустим")
+        return document.alert("Поле не може бути пустим");
     }
     const formData = new FormData(event.currentTarget);
     console.log(createFormObj(formData));
     event.currentTarget.reset();
+    localStorage.removeItem(FEEDBACK_DATA_KEY);
 });
 
  
